@@ -1,29 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import UserList from './pages/UserList';
+import EditUser from './pages/EditUser';
 
 function App() {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#4F4E4E',
-        light: '#B0B4B4',
-        dark: '#A8ADAD'
-      },
-      secondary: {
-        main: '#4E7CF6',
-        contrastText: '#D77E7D'
-      }
-    }
-  });
-
   return (
-    <ThemeProvider theme={theme}>
-      <UserList />
-    </ThemeProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<UserList />} />
+        <Route path="/edit" element={<EditUser />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
