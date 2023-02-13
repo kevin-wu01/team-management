@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const Input = styled.input`
   display: block;
   border: 1px solid #e4e7e7;
-  height: 40px;
+  height: 45px;
   border-radius: 4px;
   margin-bottom: 16px;
   width: 100%;
@@ -26,4 +26,25 @@ export const HR = styled.hr`
   height: 2px;
   border: 0;
   margin: 0;
+`;
+
+export const Radio = styled.input`
+  width: 18px;
+  cursor: pointer;
+`;
+
+export const Button = styled.button`
+  height: 40px;
+  width: 80px;
+  min-width: 10%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+export const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;

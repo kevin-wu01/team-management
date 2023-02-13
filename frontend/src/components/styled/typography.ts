@@ -11,7 +11,7 @@ export const H2 = styled.h2`
   font-family: 'Inter';
   color: #4e4d4d;
   font-size: 20px;
-  margin: 12px 0;
+  margin: 12px 0 16px;
 `;
 
 export const H3 = styled.h3`

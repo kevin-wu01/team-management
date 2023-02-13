@@ -24,7 +24,7 @@ authe = firebase.auth()
 database=firebase.database()
 
 class UserApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def getUsersListFromDict(self, userDict):
         users = []
@@ -66,7 +66,7 @@ class UserApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserDetailApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get_DBUser(self, user_id):
         user = database.child("Users").order_by_key().equal_to(user_id).get().val()
