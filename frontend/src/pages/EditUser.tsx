@@ -54,7 +54,7 @@ export default function EditUser() {
 
   const onSaveUser = () => {
     updateUser(userId, userData as User)
-      .then((res) => {
+      .then(() => {
         navigate(`/`, {
           replace: true
         });
@@ -66,7 +66,7 @@ export default function EditUser() {
 
   const onDeleteUser = () => {
     deleteUser(userId)
-      .then((res) => {
+      .then(() => {
         navigate(`/`, {
           replace: true
         });

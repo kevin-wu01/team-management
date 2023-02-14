@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/TeamService';
 
@@ -30,8 +30,7 @@ export default function AddUser() {
 
   const onSaveUser = () => {
     createUser(userData as User)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate(`/`, {
           replace: true
         });

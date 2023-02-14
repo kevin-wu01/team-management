@@ -1,10 +1,10 @@
-import { HR } from '../styled/common';
-import { H4, P } from '../styled/typography';
+import { HR } from './styled/common';
+import { H4, P } from './styled/typography';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas, faCircleUser } from '@fortawesome/free-solid-svg-icons';
-import { User } from '../../types/UserTypes';
+import { User } from '../types/UserTypes';
 
 const styles = {
   userIcon: {

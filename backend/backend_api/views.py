@@ -7,7 +7,7 @@ from .serializers import UserSerializer
 import pyrebase
 import json
 
-# Create your views here.
+# config public for demo purposes
 config = {
   "apiKey": "AIzaSyA0DhUY7mK1QGJqBEyTQ9vhGwl2zzjYxeE",
   "authDomain": "team-management-d5115.firebaseapp.com",
@@ -24,7 +24,7 @@ authe = firebase.auth()
 database=firebase.database()
 
 class UserApiView(APIView):
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
 
     def getUsersListFromDict(self, userDict):
         users = []
@@ -51,8 +51,6 @@ class UserApiView(APIView):
             'role': request.data.get('role'),
         }
 
-#        newUser = User.objects.create(**data)
- #       print(newUser._meta.fields)
         serializer = UserSerializer(data=data)
 
         if serializer.is_valid():
@@ -66,12 +64,13 @@ class UserApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserDetailApiView(APIView):
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_DBUser(self, user_id):
-        user = database.child("Users").order_by_key().equal_to(user_id).get().val()
-        if type(user) == list: return None
-        return user.popitem()[1]
+        user = database.child("Users").child(user_id).get().val()
+        if user is None: return None
+        
+        return dict(user)
 
     def get_user(self, user_id):
         try:
@@ -92,8 +91,7 @@ class UserDetailApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, user_id):
-        user_data = self.get_DBUser(user_id)
-        user_instance = User.objects.get(id=user_id)
+        user_instance = self.get_user(user_id)
 
         if not user_instance:
             return Response(
@@ -114,13 +112,12 @@ class UserDetailApiView(APIView):
         serializer = UserSerializer(instance=user_instance, data=data, partial=True)
 
         if serializer.is_valid():
-            print(serializer)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, user_id):
-        user_instance = self.get_DBUser(user_id)
+        user_instance = self.get_user(user_id)
 
         if not user_instance:
             return Response(

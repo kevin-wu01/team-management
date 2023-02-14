@@ -1,9 +1,4 @@
-import { User } from '../types/UserTypes';
 import { Button } from './styled/common';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const styles = {
   buttonsDiv: {
@@ -18,7 +13,9 @@ const styles = {
   },
   save: {
     color: 'white',
-    backgroundColor: '#4E7CF6'
+    backgroundColor: '#4E7CF6',
+    width: '80px',
+    minWidth: '10%'
   }
 };
 
@@ -31,7 +28,6 @@ export default function UserUpdateButtons({
   onDelete?: () => void;
   onSave: () => void;
 }) {
-  library.add(fas, faCircleCheck);
   return (
     <div style={styles.buttonsDiv}>
       {canDelete && onDelete ? (
@@ -41,11 +37,9 @@ export default function UserUpdateButtons({
       ) : (
         <div />
       )}
-      <div>
-        <Button onClick={() => onSave()} style={styles.save}>
-          Save
-        </Button>
-      </div>
+      <Button onClick={() => onSave()} style={styles.save}>
+        Save
+      </Button>
     </div>
   );
 }

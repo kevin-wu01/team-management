@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { User } from '../types/UserTypes';
 import { HR, Radio } from './styled/common';
 import { H2, P } from './styled/typography';
@@ -28,6 +29,15 @@ export default function UserRole({
   userData: User;
   setUserData: (user: User) => void;
 }) {
+  useEffect(() => {
+    if (typeof userData.role === 'undefined') {
+      setUserData({
+        ...userData,
+        role: 'U'
+      });
+    }
+  }, []);
+
   const onSelectRole = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const element = e.target as HTMLElement;
     let role;
@@ -60,13 +70,16 @@ export default function UserRole({
       <div id="Regular" style={styles.optionDiv} onClick={(e) => onSelectRole(e)}>
         <P
           style={
-            userData.role === 'U'
+            userData.role === 'U' || typeof userData.role === 'undefined'
               ? { ...styles.optionLabel, ...styles.optionSelected }
               : { ...styles.optionLabel, ...styles.optionDeselected }
           }>
           Regular - Can't delete members
         </P>
-        <Radio type="radio" checked={userData.role === 'U'} />
+        <Radio
+          type="radio"
+          checked={userData.role === 'U' || typeof userData.role === 'undefined'}
+        />
       </div>
       <HR />
       <div id="Admin" style={styles.optionDiv} onClick={(e) => onSelectRole(e)}>

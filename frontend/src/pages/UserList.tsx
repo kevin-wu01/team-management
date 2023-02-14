@@ -7,7 +7,7 @@ import { SpinnerWrapper, Wrapper } from '../components/styled/common';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas, faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import UserTile from '../components/UserTile/UserTile';
+import UserTile from '../components/UserTile';
 import { User } from '../types/UserTypes';
 import { getUsers } from '../services/TeamService';
 
