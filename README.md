@@ -2,6 +2,8 @@
 
 hello! thanks for reviewing my assignment, instructions are listed below to start the application
 
+Estimated time spent: 16 hours
+
 ### Starting the front-end
 ``` 
 # install dependencies
@@ -18,7 +20,7 @@ yarn start
 python -m venv <venv name>
 
 # activate virtual environment
-/path/to/<venv name>/Scripts/activate
+./<venv name>/Scripts/activate
 
 # install dependencies
 cd ./backend/ 
