@@ -1,9 +1,3 @@
-# Instawork Assignment
-
-hello! thanks for reviewing my assignment, instructions are listed below to start the application
-
-Estimated time spent: 16 hours
-
 ### Starting the front-end
 ``` 
 # install dependencies
